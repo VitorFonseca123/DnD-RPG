@@ -1,4 +1,5 @@
-def converter(v1,v2,m1,m2 )
+def converter(v1,v2,m1,m2 ):
+    print("teste")
 def Troco(moeda1, moeda2):
     troco = 0
     if moeda1 == moeda2:
