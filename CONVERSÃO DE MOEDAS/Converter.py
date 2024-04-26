@@ -13,9 +13,11 @@ def converter(v1,v2,m1,m2 ):
         # Se o pagamento for em peças de Ouro
         if m2 == "PL":
             convertido = v2*10
-            if v1>(convertido):
+            if v1==convertido:
+                return "0_"+m1
+            elif v1>(convertido):
                 return str(v1-convertido)+"_PO"
-            else:
+            else:  return "Moedas Insuficientes"
 
 def Troco(moeda1, moeda2):
     troco = 0
@@ -32,8 +34,8 @@ def Troco(moeda1, moeda2):
     else:
         return converter(v1,v2, moeda1[1].upper(), moeda2[1].upper())
 
-entrada = "1_Pl"
-valor_a_pagar = "9_Po"
+entrada = "10_Po"
+valor_a_pagar = "1_Pl"
 moeda1 = entrada.split("_")
 moeda2 = valor_a_pagar.split("_")
 
