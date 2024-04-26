@@ -12,12 +12,15 @@ def converter(v1,v2,m1,m2 ):
     elif m1 == "PO":
         # Se o pagamento for em peças de Ouro
         if m2 == "PL":
-            return str(v1-(v2*10))+"_PO"
+            convertido = v2*10
+            if v1>(convertido):
+                return str(v1-convertido)+"_PO"
+            else:
 
 def Troco(moeda1, moeda2):
     troco = 0
     if moeda1 == moeda2:
-        return troco
+        return troco+"_"+moeda1[1]
     v1 = int(moeda1[0])
     v2 = int(moeda2[0])
     if moeda1[1] == moeda2[1]:
