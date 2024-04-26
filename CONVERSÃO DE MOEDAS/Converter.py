@@ -18,6 +18,8 @@ def converter(v1,v2,m1,m2 ):
             elif v1>(convertido):
                 return str(v1-convertido)+"_PO"
             else:  return "Moedas Insuficientes"
+        if m2 == "PE":
+            return str((v1 * 2) - v2) + "_PE"
 
 def Troco(moeda1, moeda2):
     troco = 0
