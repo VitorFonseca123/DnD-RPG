@@ -9,6 +9,8 @@ def converter(v1,v2,m1,m2 ):
         "PL": {"PO": 10, "PE": 20, "PP": 100, "PC": 100},
         "PO": {"PL": 10, "PE": 2, "PP": 10, "PC": 100},
         "PE": {"PL": 20, "PO": 2, "PP": 5, "PC": 50},
+        "PP": {"PL": 100, "PO": 10, "PE": 5, "PC": 10},
+        "PC": {"PL": 1000, "PO": 100, "PE": 50, "PP": 10},
     }
     if m1 in conversao and m2 in conversao[m1]:
         if m1 == "PL":
