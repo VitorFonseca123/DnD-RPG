@@ -5,8 +5,9 @@ CREATE TABLE Escola_Magia (
 );
 CREATE TABLE Classe (
     id_classe SERIAL PRIMARY KEY,
-    nome_classe VARCHAR(50) NOT NULL,
+    nome_classe VARCHAR(50) NOT NULL
 );
+
 CREATE TABLE habilidade(
 	id_habilidade serial PRIMARY KEY,
 	nome_skill VARCHAR(50) NOT NULL,
