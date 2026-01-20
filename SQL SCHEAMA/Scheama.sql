@@ -33,7 +33,7 @@ CREATE TABLE Sub_raca (
     nome_subraca VARCHAR(50),
     descricao_subraca TEXT,
     aprim_val_hab VARCHAR(50),
-    proficiencias TEXT,
+    proficiencias TEXT
 );
 
 CREATE TABLE Subclasse(
@@ -44,11 +44,11 @@ CREATE TABLE Subclasse(
 );
 CREATE TABLE habilidade_origem (
 	id_habilidadeOr SERIAL PRIMARY KEY,
-    id_habilidade INTEGER REFERENCES habilidade_racial(id_habilidade),
+    id_habilidade INTEGER REFERENCES habilidade(id_habilidade),
     id_raca INTEGER REFERENCES Raca(id_raca),
 	id_subraca INTEGER REFERENCES Sub_raca(id_subraca),
 	id_classe INTEGER REFERENCES Classe(id_classe),
-	id_subclasse INTEGER REFERENCES Subclasse(id_sublasse),
+	id_subclasse INTEGER REFERENCES Subclasse(id_subclasse)
     
 );
 CREATE TABLE Magia (
@@ -65,7 +65,7 @@ CREATE TABLE Magia (
     somatico BOOLEAN DEFAULT false,
     verbal BOOLEAN DEFAULT false,
     material TEXT
-)
+);
 CREATE TABLE Classe_magia (
     id_magia INTEGER REFERENCES Magia(id_magia),
     id_classe INTEGER REFERENCES Classe(id_classe),
