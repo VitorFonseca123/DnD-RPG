@@ -19,7 +19,7 @@ CREATE TABLE Raca (
     id_raca SERIAL PRIMARY KEY,
     nome_raca VARCHAR(50) NOT NULL,
     descricao_raca TEXT,
-    aprim_val_hab VARCHAR(2),
+    aprim_val_hab VARCHAR(50),
     tamanho VARCHAR(20),
     deslocamento INTEGER,
     proficiencias TEXT,
@@ -31,7 +31,7 @@ CREATE TABLE Sub_raca (
     id_raca INTEGER REFERENCES Raca(id_raca) ON DELETE CASCADE,
     nome_subraca VARCHAR(50),
     descricao_subraca TEXT,
-    aprim_val_hab VARCHAR(2),
+    aprim_val_hab VARCHAR(50),
     proficiencias TEXT,
 );
 
@@ -42,11 +42,36 @@ CREATE TABLE Subclasse(
 	desc_subclasse TEXT
 );
 CREATE TABLE habilidade_origem (
+	id_habilidadeOr SERIAL PRIMARY KEY,
     id_habilidade INTEGER REFERENCES habilidade_racial(id_habilidade),
     id_raca INTEGER REFERENCES Raca(id_raca),
 	id_subraca INTEGER REFERENCES Sub_raca(id_subraca),
 	id_classe INTEGER REFERENCES Classe(id_classe),
 	id_subclasse INTEGER REFERENCES Subclasse(id_sublasse),
-    PRIMARY KEY (id_habilidade, id_raca, id_subraca, id_classe, id_subclasse)
+    
 );
-
+CREATE TABLE Magia (
+    id_magia SERIAL PRIMARY KEY,
+    nome_magia VARCHAR(100) NOT NULL,
+    nivel INTEGER NOT NULL,
+    id_escola INTEGER REFERENCES Escola_Magia(id_escola),
+    tempo_conju VARCHAR(50),
+    alcance VARCHAR(50),
+    duracao VARCHAR(50),
+    descricao_magia TEXT,
+    is_ritual BOOLEAN DEFAULT false,
+    is_concentration BOOLEAN DEFAULT false,
+    somatico BOOLEAN DEFAULT false,
+    verbal BOOLEAN DEFAULT false,
+    material TEXT
+)
+CREATE TABLE Classe_magia (
+    id_magia INTEGER REFERENCES Magia(id_magia),
+    id_classe INTEGER REFERENCES Classe(id_classe),
+    PRIMARY KEY (id_magia, id_classe)
+);
+CREATE TABLE Raca_magia (
+    id_magia INTEGER REFERENCES Magia(id_magia),
+    id_raca INTEGER REFERENCES Raca(id_raca),
+    PRIMARY KEY (id_magia, id_raca)
+);
