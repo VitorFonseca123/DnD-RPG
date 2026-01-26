@@ -66,13 +66,13 @@ CREATE TABLE Magia (
     verbal BOOLEAN DEFAULT false,
     material TEXT
 );
-CREATE TABLE Classe_magia (
-    id_magia INTEGER REFERENCES Magia(id_magia),
-    id_classe INTEGER REFERENCES Classe(id_classe),
-    PRIMARY KEY (id_magia, id_classe)
-);
-CREATE TABLE Raca_magia (
-    id_magia INTEGER REFERENCES Magia(id_magia),
+
+CREATE TABLE Magia_Origem (
+	id_MagiaOR SERIAL PRIMARY KEY,
+	id_magia INTEGER REFERENCES Magia(id_magia),
     id_raca INTEGER REFERENCES Raca(id_raca),
-    PRIMARY KEY (id_magia, id_raca)
+	id_subraca INTEGER REFERENCES Sub_raca(id_subraca),
+	id_classe INTEGER REFERENCES Classe(id_classe),
+	id_subclasse INTEGER REFERENCES Subclasse(id_subclasse)
+    
 );
