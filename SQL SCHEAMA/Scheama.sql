@@ -44,18 +44,18 @@ CREATE TABLE Subclasse(
 );
 CREATE TABLE habilidade_origem (
 	id_habilidadeOr SERIAL PRIMARY KEY,
-    id_habilidade INTEGER REFERENCES habilidade(id_habilidade),
-    id_raca INTEGER REFERENCES Raca(id_raca),
-	id_subraca INTEGER REFERENCES Sub_raca(id_subraca),
-	id_classe INTEGER REFERENCES Classe(id_classe),
-	id_subclasse INTEGER REFERENCES Subclasse(id_subclasse)
+    id_habilidade INTEGER REFERENCES habilidade(id_habilidade) ON DELETE CASCADE,
+    id_raca INTEGER REFERENCES Raca(id_raca) ON DELETE CASCADE,
+	id_subraca INTEGER REFERENCES Sub_raca(id_subraca) ON DELETE CASCADE,
+	id_classe INTEGER REFERENCES Classe(id_classe) ON DELETE CASCADE,
+	id_subclasse INTEGER REFERENCES Subclasse(id_subclasse) ON DELETE CASCADE
     
 );
 CREATE TABLE Magia (
     id_magia SERIAL PRIMARY KEY,
     nome_magia VARCHAR(100) NOT NULL,
     nivel INTEGER NOT NULL,
-    id_escola INTEGER REFERENCES Escola_Magia(id_escola),
+    id_escola INTEGER REFERENCES Escola_Magia(id_escola) ON DELETE CASCADE,
     tempo_conju VARCHAR(50),
     alcance VARCHAR(50),
     duracao VARCHAR(50),
@@ -69,10 +69,10 @@ CREATE TABLE Magia (
 
 CREATE TABLE Magia_Origem (
 	id_MagiaOR SERIAL PRIMARY KEY,
-	id_magia INTEGER REFERENCES Magia(id_magia),
-    id_raca INTEGER REFERENCES Raca(id_raca),
-	id_subraca INTEGER REFERENCES Sub_raca(id_subraca),
-	id_classe INTEGER REFERENCES Classe(id_classe),
-	id_subclasse INTEGER REFERENCES Subclasse(id_subclasse)
+	id_magia INTEGER REFERENCES Magia(id_magia) ON DELETE CASCADE,
+    id_raca INTEGER REFERENCES Raca(id_raca) ON DELETE CASCADE,
+	id_subraca INTEGER REFERENCES Sub_raca(id_subraca) ON DELETE CASCADE,
+	id_classe INTEGER REFERENCES Classe(id_classe) ON DELETE CASCADE,
+	id_subclasse INTEGER REFERENCES Subclasse(id_subclasse) ON DELETE CASCADE
     
 );
