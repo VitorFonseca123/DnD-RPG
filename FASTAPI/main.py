@@ -16,6 +16,7 @@ def read_magias(
     classe_id: int = None, 
     nivel: int = None, 
     escola_id: int = None,
+    
     db: Session = Depends(database.get_db)
 ):
     magias = crud.get_magias_filtradas(db, classe_id=classe_id, nivel=nivel, escola_id=escola_id)

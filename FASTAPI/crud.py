@@ -21,9 +21,16 @@ def get_magias_filtradas(
  .outerjoin(models.Raca, models.MagiaOrigem.id_raca == models.Raca.id_raca) \
  .outerjoin(models.Subclasse, models.MagiaOrigem.id_subclasse == models.Subclasse.id_subclasse)\
  .all()
+    nome_origens = set()
     for linha in origens:
-        print(f"Magia: {linha.nome_magia} | Classe: {linha.nome_classe} | Raça: {linha.nome_raca} | Subclasse: {linha.nome_subclasse}")
-
+        #print(f"Magia: {linha.nome_magia} | Classe: {linha.nome_classe} | Raça: {linha.nome_raca} | Subclasse: {linha.nome_subclasse}")
+        if linha.nome_classe:
+            nome_classe = linha.nome_classe
+            if linha.nome_subclasse :
+                nome_classe += f" : {linha.nome_subclasse}"
+            nome_origens.add((nome_classe))
+        elif linha.nome_raca:
+            nome_origens.add((linha.nome_raca))
 
       # Filtros por Relação com MagiaOrigem
     if classe_id or raca_id:
@@ -43,7 +50,12 @@ def get_magias_filtradas(
     if escola_id is not None:
         query = query.filter(models.Magia.id_escola == escola_id)
 
-    return query.all()
+    magias = query.all()
+    for magia in magias:
+        magia.nome_origens = "".join(nome_origens)
+    
+
+    return magias
 
 def criar_magia(db: Session, magia: schemas.MagiaCreate):
     

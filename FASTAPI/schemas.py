@@ -22,6 +22,7 @@ class MagiaBase(BaseModel):
     somatico: bool = False
     verbal: bool = False
     material: Optional[str] = None
+    nome_origens: Optional[str] = None
 
 
 class MagiaCreate(MagiaBase):

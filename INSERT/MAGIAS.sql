@@ -18,6 +18,7 @@ ins_classes AS (
     FROM nova_magia m, Classe c 
     WHERE c.nome_classe IN ('Bardo', 'Clérigo')
 )
-INSERT INTO Magia_Origem (id_magia, id_subclasse)
-SELECT  m.id_magia, (SELECT id_subclasse  FROM Subclasse WHERE nome_subclasse  = 'A ArquiFada') 
+INSERT INTO Magia_Origem (id_magia, id_subclasse, id_classe)
+SELECT  m.id_magia, (SELECT id_subclasse  FROM Subclasse WHERE nome_subclasse  = 'A ArquiFada'),
+(SELECT id_classe FROM Classe WHERE nome_classe = 'Bruxo')
 FROM nova_magia m;
